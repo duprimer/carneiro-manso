@@ -1,0 +1,130 @@
+@charset "utf8";
+
+
+@font-face {
+    font-family: 'chaparall';
+    src: url(fonts/chaparral-pro-bold-caption.otf);
+}
+
+:root{
+
+    --cor1: #A61B26;
+    --cor2: #8C2703;
+    --cor3: #D9AA1E;
+    --cor4: #F2A444;
+
+    --fonttitle: 'chaparall', cursive;
+
+
+
+}
+
+/* Reset geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    
+}
+
+/* Header - Mobile First */
+header {
+    background-color: #8C2703;
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Layout do header para telas pequenas */
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+   
+}
+/* Estilos dos textos */
+.left-text, .right-text {
+    font-size: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+/* Estilo da imagem */
+.header-content img {
+    height: 50px;
+}
+
+nav{
+    background-color: var(--cor3);   
+    display: none ;
+}
+
+/* Menu de navegação */
+span#burguer{
+    background-color: #f1ba12;
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    max-width:100%;
+
+}
+
+span#burguer:hover{
+    background-color: var(--cor3);
+
+}
+
+nav>ul {
+    
+    list-style-type: none;
+
+}
+
+
+
+nav > ul>li>a {
+    display:block;
+    padding:10px;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.2rem;
+    border-top: 2px solid rgba(126, 126, 126, 0.473);
+}
+
+nav>ul>li>a:hover{
+    background-color: var(--cor4);
+}
+
+
+
+    
+
+
+
+
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Garante que o footer fique no fundo da página */
+}
