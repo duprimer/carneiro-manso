@@ -1,0 +1,15 @@
+{
+    "cortejo": [
+      "https://raw.githubusercontent.com/seu-usuario/seu-repo/main/imagens/cortejo/foto1.jpg",
+      "https://raw.githubusercontent.com/seu-usuario/seu-repo/main/imagens/cortejo/foto2.jpg"
+    ],
+    "ensaio": [
+      "https://raw.githubusercontent.com/seu-usuario/seu-repo/main/imagens/ensaio/foto1.jpg",
+      "https://raw.githubusercontent.com/seu-usuario/seu-repo/main/imagens/ensaio/foto2.jpg"
+    ],
+    "apresentacao": [
+      "https://raw.githubusercontent.com/seu-usuario/seu-repo/main/imagens/apresentacao/foto1.jpg",
+      "https://raw.githubusercontent.com/seu-usuario/seu-repo/main/imagens/apresentacao/foto2.jpg"
+    ]
+  }
+  
