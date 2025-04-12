@@ -455,7 +455,7 @@ hr {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 30px; /* Maior espaço entre os blocos */
+    gap: 10px; /* Maior espaço entre os blocos */
     width: 80%;
     margin: auto;
 }
@@ -463,9 +463,9 @@ hr {
 .about-box {
     display: flex;
     align-items: center;
-    gap: 30px; /* Espaço entre imagem e texto */
-    width: 100%;
-    border: 2px solid black;
+    gap: 50px; /* Espaço entre imagem e texto */
+    width: 1000px;
+    
 }
 
 /* Imagem à esquerda */
@@ -480,11 +480,11 @@ hr {
 
 /* Ajuste do tamanho da imagem */
 .about-pic {
-    width: 50%; /* Ajuste a largura conforme necessário */
+    width: 40%; /* Ajuste a largura conforme necessário */
     max-width: 800px; /* Adicione um tamanho máximo */
 }
 .about-box picture img {
-    width: 100%; /* Ocupa 100% do espaço disponível dentro do container */
+    width: 80%; /* Ocupa 100% do espaço disponível dentro do container */
     height: auto; /* Mantém a proporção da imagem */
     border-radius: 10px;
 }
@@ -499,7 +499,7 @@ hr {
     width: 50%; /* O texto ocupa a outra metade */
     font-size: 20px; /* Aumenta o tamanho do texto */
     line-height: 1.6; /* Melhora a leitura */
-    text-align: justify;
+    text-align: leftproje;
 }
 
 /* Responsivo para telas menores */
@@ -531,12 +531,14 @@ hr {
 
 /* Estilo de cada bloco de projeto */
 .project {
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 20px;
     background: white;
     padding: 20px;
     border-radius: 8px;
+    margin-bottom: 30px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -557,6 +559,50 @@ hr {
     flex: 1;
 }
 
+.project-text h2, .project-text p {
+    margin: 0;
+  }
+
+  a{
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria 2 colunas */
+    gap: 20px; /* Espaço entre os projetos */
+  }
+  
+/*tela de premiações*/
+
+.premio-card {
+   
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  
+  .premio-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .premio-img {
+    height: 200px;
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .premio-texto {
+    padding: 20px;
+  }
+  
+
+  
 
 /* portal transparencia*/
 
