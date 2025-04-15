@@ -1,7 +1,7 @@
 @charset "utf8";
 
 @font-face {
-    font-family: 'chaparall';
+    font-family: 'chaparrall';
     src: url(fonts/chaparral-pro-bold-caption.otf);
 }
 
@@ -43,6 +43,7 @@
 
     nav{
         display: none;
+        
     }  
 
 }
@@ -370,6 +371,7 @@ tr:hover {
         flex-direction: row;
         justify-content: space-between;
         max-width: 1200px;
+        
         margin: 0 auto;
     }
 
@@ -600,57 +602,8 @@ hr {
 /* tela de projetos*/
 
 
-.projects-section {
-    width: 80%;
-    max-width: 900px;
-    margin: 50px auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Cria 2 colunas */
-    gap: 20px; /* Espaço entre os projetos */
-}
 
-/* Estilo de cada bloco de projeto */
-.project {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo da imagem */
-.project-img {
-    width: 180px;
-    height: 220px;
-    background: #ccc; /* Simula uma imagem */
-    border-radius: 8px;
-}
-
-.project-img:hover{
-    transform: scale(1);
-}
-
-/* Texto */
-.project-text {
-    flex: 1;
-}
-
-.project-text h2, .project-text p {
-    margin: 0;
-  }
-
-  a{
-    width: 80%;
-    max-width: 900px;
-    margin: 50px auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Cria 2 colunas */
-    gap: 20px; /* Espaço entre os projetos */
-  }
+ 
   
 /*tela de premiações*/
 .premios-container {
@@ -867,6 +820,154 @@ button {
 }
 
 
+
+.video-wrapper {
+    margin: auto;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    cursor: pointer;
+  }
+  
+  .video-frame {
+    width: 100%;
+    height: 450px;
+    border: none;
+    pointer-events: none;
+  }
+  
+
+/*tela de projetos*/
+
+
+
+/* Galeria */
+.mini-gallery h2 {
+    margin-bottom: 20px;
+    color: var(--cor-primaria);
+  }
+  
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  
+  .gallery-item img:hover {
+    transform: scale(1.05);
+  }
+  
+  * Vídeos */
+  .video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .video-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  
+  .video-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .thumbnail-container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .video-info {
+    padding: 10px;
+  }
+  
+  .video-info h4 {
+    font-size: 1rem;
+    color: var(--cor-primaria);
+  }
+  
+
+/* Artigos */
+.arti-proj {
+  display: flex;
+  align-items: center;
+  background-color: #e1dfdf;
+  padding: 30px;
+  border-radius: 10px;
+  gap: 55px;
+  margin-bottom: 40px;
+}
+
+.arti-content {
+  max-width: 460px;
+  flex-shrink: 1;
+}
+
+.arti-content h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.hr-horizontal {
+  width: 80%;
+  height: 2px;
+  background-color: darkred;
+  border: none;
+  margin: 0 auto 15px auto;
+}
+
+.arti-content p {
+  text-align: justify;
+  text-decoration: none;
+  font-size:1rem;
+  line-height: 2rem;
+}
+
+.hr-vertical {
+  width: 15px;
+  background-color: darkred;
+  height: 500px;
+}
+
+.arti-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  gap: 25px;
+}
+
+.arti-gallery img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.galeria img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .galeria img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
 
 
   

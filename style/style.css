@@ -71,6 +71,8 @@ header {
 nav{
     background-color: var(--cor3);   
     display: none ;
+    height: 45px;
+    
 }
 
 /* Menu de navegação */
@@ -114,6 +116,11 @@ nav>ul>li>a:hover{
 
 
 
+
+/*tela projeto*/
+
+
+  
     
 
 
