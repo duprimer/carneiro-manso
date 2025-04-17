@@ -966,7 +966,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 1300px;
+    max-width: 60vw;
     margin: auto;
     padding: 20px;
   }
@@ -999,6 +999,7 @@ button {
   }
   
   .about-text {
+    text-align: justify; 
     flex: 1;
     font-size: 2rem;
     font-family: var(--fonttitle);
