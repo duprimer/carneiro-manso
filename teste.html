@@ -1,72 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Portal da Transparência</title>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Premiações</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f9f9f9;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h2 {
+      font-family: 'Georgia', serif;
+      font-size: 2rem;
+      margin-bottom: 50px;
+    }
+
+    .premiacao-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .premiacao {
+      background-color: darkred;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 20px 30px;
+      border-radius: 200px;
+      clip-path: ellipse(70% 50% at 60% 50%);
+      position: relative;
+      width: 600px;
+      height: 360px;
+      transition: 0.3s ease;
+    }
+
+    .premiacao:hover {
+      transform: scale(1.03);
+    }
+
+    .premiacao img {
+      width: 290px;
+      height: 290px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+      background-color: white;
+      border: 4px solid white;
+    }
+
+    .premiacao-texto {
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-align: left;
+    }
+
+    .estrela {
+      position: absolute;
+      top: -10px;
+      left: 480px;
+      font-size: 60px;
+      color: rgb(255, 230, 3);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .ano{
+        font-size: 1.5em;
+    }
+
+    @media (max-width: 768px) {
+      .premiacao {
+        width: 90%;
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        clip-path: ellipse(80% 60% at 50% 50%);
+      }
+
+      .premiacao img {
+        margin: 0 0 15px 0;
+      }
+
+      .estrela {
+        top: 10px;
+        left: 15px;
+        font-size: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <h2>Cadastro de Serviços</h2>
-    <form id="cadastroForm">
-        <input type="text" id="nome" placeholder="Nome" required>
-        <input type="text" id="servico" placeholder="Serviço Prestado" required>
-        <input type="number" id="valor" placeholder="Valor" required>
-        <button type="submit">Cadastrar</button>
-    </form>
-    
-    
+  <h2>Premiações</h2>
 
-    <!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <div class="premiacao-container">
+    <div class="premiacao">
+      <span class="estrela">★</span>
+      <img src="imagens/483245851_18138621253390543_672671761289347602_n.webp" alt="Foto">
+      <div class="premiacao-texto">
+        <h1>4 vezes campeão da especial</h1>
+        <ul><li class="ano">2011</li>
+            <li class="ano">2014</li>
+            <li class="ano">2017</li>
+            <li class="ano">2023</li>
+            <li class="ano">2024</li>        
+        </ul>
+      </div>
+    </div>
 
-
-    <script>
-        // Configuração do Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyDVoWWfkfqn95KrUeyAgdwjt4Y8kXXrgy4",
-                    authDomain: "carneiro-manso.firebaseapp.com",
-                    projectId: "carneiro-manso",
-                    storageBucket: "carneiro-manso.firebasestorage.app",
-                    messagingSenderId: "660697393282",
-                    appId: "1:660697393282:web:24f8808a9b2c7f72626c9b",
-                    measurementId: "G-MJ51VVL8RJ"
-        };
-
-        // Inicializar Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        document.getElementById('cadastroForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-    
-        let nome = document.getElementById('nome').value;
-        let servico = document.getElementById('servico').value;
-        let valor = parseFloat(document.getElementById('valor').value);
-    
-        db.collection("cadastroForm").add({
-            nome: nome,
-            servico: servico,
-            valor: valor,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp() // Adiciona um timestamp
-        })
-        .then(() => {
-            alert("Cadastro realizado com sucesso!");
-            document.getElementById('cadastroForm').reset();
-        })
-        .catch(error => {
-            console.error("Erro ao cadastrar:", error);
-        });
-    });
+    <div class="premiacao">
+      <span class="estrela">★</span>
+      <img src="imagens/img04.jpg" alt="Foto">
+      <div class="premiacao-texto">Texto</div>
+    </div>
+  
 
 
-    </script>
+  <div class="premiacao">
+    <span class="estrela">★</span>
+    <img src="imagens/img04.jpg" alt="Foto">
+    <div class="premiacao-texto">Texto</div>
+  </div>
+</div>
 
 
+
+<div class="premiacao">
+    <span class="estrela">★</span>
+    <img src="imagens/img04.jpg" alt="Foto">
+    <div class="premiacao-texto">Texto</div>
+  </div>
+</div>
+</div>
 
 </body>
 </html>
