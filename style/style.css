@@ -38,24 +38,23 @@ body {
     
 }
 
-/* Header - Mobile First */
+/* HEADER */
 header {
     background-color: #8C2703;
     width: 100vw;
-    height: 100px;
+    height: 170px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-/* Layout do header para telas pequenas */
+
 .header-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%; 
-   
+    width: 100vw; 
 }
-/* Estilos dos textos */
+
 .left-text, .right-text {
     font-size: 1rem;
     color: white;
@@ -63,57 +62,59 @@ header {
     flex-direction: column;
     text-align: center;
 }
-/* Estilo da imagem */
+
 .header-content img {
-    height: 50px;
+    height: 150px;
 }
 
-nav{
+/* NAV - Menu */
+
+nav {
     background-color: var(--cor3);   
-    display: none ;
-    height: 45px;
-    
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    z-index: 999;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
 }
 
-/* Menu de navegação */
-span#burguer{
+span#burguer {
     background-color: #f1ba12;
     color: white;
     display: block;
     text-align: center;
     padding: 10px;
     cursor: pointer;
-    max-width:100%;
-
+    width: 100%;
+    font-size: 1.5rem;
 }
 
-span#burguer:hover{
+span#burguer:hover {
     background-color: var(--cor3);
-
 }
 
-nav>ul {
-    
-    list-style-type: none;
-
+nav > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-
-
-nav > ul>li>a {
-    display:block;
-    padding:10px;
+nav > ul > li > a {
+    display: block;
+    padding: 12px 20px;
     text-decoration: none;
     text-align: center;
     color: #ffffff;
     font-size: 1.2rem;
-    border-top: 2px solid rgba(126, 126, 126, 0.473);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-nav>ul>li>a:hover{
+nav > ul > li > a:hover {
     background-color: var(--cor4);
 }
-
 
 
 
