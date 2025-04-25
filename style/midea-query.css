@@ -27,8 +27,10 @@
 }
 
 html, body {
-    height: 100%;
-    margin: 0;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
     .header-content {
@@ -57,7 +59,29 @@ html, body {
         display: none;
         
     }  
+    main {
+      flex: 1;
+  }
+  
+  /* Estilo para o rodapé */
+  footer {
+      background-color: #333; /* Cor de fundo do rodapé */
+      color: #fff; /* Cor do texto */
+      text-align: center;
+      padding: 10px;
+      margin-top: auto; /* Isso empurra o footer para o final da página */
+  }main {
+    flex: 1;
+}
 
+/* Estilo para o rodapé */
+footer {
+    background-color: #333; /* Cor de fundo do rodapé */
+    color: #fff; /* Cor do texto */
+    text-align: center;
+    padding: 10px;
+    margin-top: auto; /* Isso empurra o footer para o final da página */
+}
 
 
     /*carrossel de imagens */
@@ -469,7 +493,24 @@ border-radius: 0; /* remove borda arredondada da imagem */
 
 @media (min-width: 800px) {
 
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
 
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: #333; /* Cor de fundo do rodapé */
+  color: #fff; /* Cor do texto */
+  text-align: center;
+  padding: 10px;
+  margin-top: auto; /* Isso empurra o footer para o final da página */
+}
 
   .header-content {
     flex-direction: row;
@@ -705,7 +746,6 @@ hr {
 .filters {
     margin: auto;
     margin-bottom: 20px;
-    
     height: 45px;
     width: 800px;
 }
@@ -743,7 +783,7 @@ th {
 
 /* Ajustando a tabela para ocupar 100% da largura do contêiner */
 #tabelaServidores {
-    width: 100%;
+    width: 89%;
     table-layout: auto; /* Permite que a tabela se ajuste automaticamente */
 }
 
@@ -751,6 +791,31 @@ th {
 #tabelaServidores {
     min-width: 600px; /* Define uma largura mínima para a tabela, se necessário */
 }
+
+
+ 
+  /* Centraliza a pesquisa e o seletor de registros */
+  .dataTables_wrapper .dataTables_filter,
+  .dataTables_wrapper .dataTables_length {
+      text-align: center;
+      float: none;
+      margin: 10px auto;
+  }
+  
+  /* Ajusta a tabela com rolagem vertical */
+  .dataTables_scrollBody {
+      max-height: 400px !important;
+      overflow-y: auto !important;
+  }
+  
+  /* Opcional: estiliza o corpo da tabela com rolagem */
+  #tabelaServidores {
+      width: 100%;
+      border-collapse: collapse;
+  }
+  
+
+
 
 
 
@@ -1300,9 +1365,14 @@ button {
   .ano{
       font-size: 1.5em;
   }
-  
-
-
+ 
+  footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 0.9rem;
+}
 }
 
 

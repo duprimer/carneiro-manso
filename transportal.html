@@ -27,7 +27,7 @@
         <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="projetos.html">Projetos</a></li>
-            <li><a href="premiaçoes.html">Premiações</a></li>
+            <li><a href="premiacoes.html">Premiações</a></li>
             <li><a href="transportal.html">Portal Transparencia</a></li>
             <li><a href="contato.html">Contato</a></li>
         </ul>
@@ -58,9 +58,7 @@
         </table>
     </main>
 
-    <footer>
-        <p>&copy; 2025. Todos os direitos reservados.</p>
-    </footer>
+    
 
     <!-- Scripts do Firebase (Versão não modular) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -108,52 +106,41 @@
     query.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const data = doc.data();
-            const id = doc.id;
             const novaLinha = tabela.insertRow();
             novaLinha.insertCell(0).textContent = data.nome;
             novaLinha.insertCell(1).textContent = data.projeto;
             novaLinha.insertCell(2).textContent = data.servico;
             novaLinha.insertCell(3).textContent = data.valor;
-            const actionCell = novaLinha.insertCell(4);
-            actionCell.innerHTML = `
-                <button class="btn-editar" onclick="abrirModal('${id}', '${data.nome}', '${data.projeto}', '${data.servico}', '${data.valor}')">Editar</button>
-                <button class="btn-excluir" onclick="excluirCadastro('${id}')">Excluir</button>`;
+        });
+
+        // Destroi a DataTable se já estiver inicializada
+        if ($.fn.DataTable.isDataTable('#tabelaServidores')) {
+            $('#tabelaServidores').DataTable().destroy();
+        }
+
+        // Recria a DataTable
+        $('#tabelaServidores').DataTable({
+            paging: false,
+            searching: true,
+            ordering: true,
+            info: true,
+            scrollY: '400px',
+            scrollCollapse: true,
+            lengthMenu: [20, 25, 50, 100],
+            language: {
+                lengthMenu: "Mostrar _MENU_ registros por página",
+                zeroRecords: "Nada encontrado",
+                info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                infoEmpty: "Nenhum registro disponível",
+                infoFiltered: "(filtrado de _MAX_ registros no total)",
+                search: "Pesquisar:"
+            }
         });
     });
 }
 
 
-        // Chama a função para carregar os dados quando a página for carregada
-        window.onload = carregarDados;
-    </script>
 
-    <script>
-        $(document).ready(function() {
-            $('#tabelaServidores').DataTable({
-                "paging": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "lengthMenu": [10, 25, 50, 100],
-                "language": {
-                    "lengthMenu": "Mostrar _MENU_ registros por página",
-                    "zeroRecords": "Nada encontrado",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
-                    "infoEmpty": "Nenhum registro disponível",
-                    "infoFiltered": "(filtrado de _MAX_ registros no total)",
-                    "search": "Pesquisar:",
-                    "paginate": {
-                        "first": "Primeiro",
-                        "last": "Último",
-                        "next": "Próximo",
-                        "previous": "Anterior"
-                    }
-                },
-                "stripeClasses": [ 'stripe-gray', 'stripe-white' ],
-                dom: 'Bfrtip',
-                buttons: ['copy', 'excel', 'pdf', 'print']
-            });
-        });
 
         function carregarProjetos() {
     const select = document.getElementById("filtroProjeto");
@@ -188,6 +175,8 @@ window.onload = () => {
 
 
     </script>
-
+<footer>
+    <p>&copy; 2025. Todos os direitos reservados.</p>
+</footer>
 </body>
 </html>
