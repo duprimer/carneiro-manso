@@ -42,7 +42,7 @@ body {
 header {
     background-color: #8C2703;
     width: 100vw;
-    height: 170px;
+    height: 190px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,7 +73,7 @@ nav {
     background-color: var(--cor3);   
     display: none;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     position: absolute;
     top: 100px;
     left: 0;

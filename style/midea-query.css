@@ -28,11 +28,19 @@
 
 html, body {
   height: 100%;
-  margin: 0;
+  margin: 0px;
+  padding: 0px;
   display: flex;
   flex-direction: column;
 }
-
+header {
+  background-color: #8C2703;
+  width: 97.5vw;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
     .header-content {
         flex-direction: row;
         justify-content: space-between;
@@ -165,6 +173,7 @@ footer {
       flex-direction: column;
       padding: 20px;
       transition: transform 0.3s ease;
+      margin: auto;
    
     }
     
@@ -384,8 +393,89 @@ footer {
 
 
 
+/*premios*/
+
+.premios-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10px;
+  gap: 10px;
+}
+
+.premio-card {
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+  background-color: white;
+}
+
+.premio-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.premio-img {
+  height: 200px;
+  background-color: #f0f0f0;
+  background-size: cover;
+  background-position: center;
+}
+
+.premio-texto {
+  padding: 15px;
+}
 
 
+/*portal transparencia */
+
+.filters {
+  width: 95%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filters select, 
+.filters button {
+  width: 90%;
+  margin: 5px 0;
+}
+
+table {
+  width: 100%;
+}
+
+#tabelaServidores_wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#tabelaServidores {
+  width: 100%;
+  min-width: 600px; /* Mantém a tabela "rolável" no celular */
+}
+
+/* Centralizando melhor os controles da tabela */
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_length {
+  text-align: center;
+  float: none;
+  margin: 10px auto;
+}
+
+/* Ajuste no scroll vertical da tabela */
+.dataTables_scrollBody {
+  max-height: 300px !important;
+}
 
 
 
@@ -469,7 +559,7 @@ border-radius: 0; /* remove borda arredondada da imagem */
 }
 
 
-  
+
   }
 
 
