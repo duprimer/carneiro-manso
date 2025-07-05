@@ -1,29 +1,32 @@
-let slideIndex = 0;
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
 
-function mostrarSlide(index) {
-    if (index >= slides.length) { slideIndex = 0; }
-    if (index < 0) { slideIndex = slides.length - 1; }
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
 
-    document.querySelector(".carousel-images").style.transform = `translateX(-${slideIndex * 100}vw)`;
+    function mostrarSlide(index) {
+        if (index >= slides.length) { slideIndex = 0; }
+        if (index < 0) { slideIndex = slides.length - 1; }
 
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[slideIndex].classList.add("active");
-}
+        document.querySelector(".carousel-images").style.transform = `translateX(-${slideIndex * 100}vw)`;
 
-function mudarSlide(n) {
-    slideIndex += n;
+        dots.forEach(dot => dot.classList.remove("active"));
+        dots[slideIndex].classList.add("active");
+    }
+
+    function mudarSlide(n) {
+        slideIndex += n;
+        mostrarSlide(slideIndex);
+    }
+
+    function irParaSlide(n) {
+        slideIndex = n;
+        mostrarSlide(slideIndex);
+    }
+
+    setInterval(() => mudarSlide(1), 5000);
     mostrarSlide(slideIndex);
-}
 
-function irParaSlide(n) {
-    slideIndex = n;
-    mostrarSlide(slideIndex);
-}
+    // Se quiser expor as funções para uso no HTML (ex: onclick), adicione:
+    window.mudarSlide = mudarSlide;
+    window.irParaSlide = irParaSlide;
 
-// Troca automática de slides a cada 5 segundos
-setInterval(() => mudarSlide(1), 5000);
-
-// Inicializa o carrossel
-mostrarSlide(slideIndex);
