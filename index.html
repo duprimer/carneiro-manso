@@ -38,31 +38,32 @@
     
 
 
-      <!-- Carousel -->
+    <!-- Carousel -->
 <div class="carousel">
   <div class="carousel-images">
-      <picture>
-          <source media="(max-width: 600px)" srcset="imagens/slide/vertical1.webp">
-          <img src="imagens/slide/imgsl1.webp" class="slide" alt="Imagem 1">
-      </picture>
-      <picture>
-          <source media="(max-width: 600px)" srcset="imagens/slide/vertical2.webp">
-          <img src="imagens/slide/imgsl2.webp" class="slide" alt="Imagem 2">
-      </picture>
-      <picture>
-          <source media="(max-width: 600px)" srcset="imagens/slide/vertical1.webp">
-          <img src="imagens/slide/imgsl1.webp" class="slide" alt="Imagem 3">
-      </picture>
+    <picture>
+      <source media="(max-width: 600px)" srcset="imagens/slide/vertical1.webp">
+      <img src="imagens/slide/imgsl1.webp" class="slide" alt="Imagem 1">
+    </picture>
+    <picture>
+      <source media="(max-width: 600px)" srcset="imagens/slide/vertical2.webp">
+      <img src="imagens/slide/imgsl2.webp" class="slide" alt="Imagem 2">
+    </picture>
+    <picture>
+      <source media="(max-width: 600px)" srcset="imagens/slide/vertical1.webp">
+      <img src="imagens/slide/imgsl1.webp" class="slide" alt="Imagem 3">
+    </picture>
   </div>
+
   <button class="prev" onclick="mudarSlide(-1)">&#10094;</button>
   <button class="next" onclick="mudarSlide(1)">&#10095;</button>
+
   <div class="dots">
-      <span class="dot" onclick="irParaSlide(0)"></span>
-      <span class="dot" onclick="irParaSlide(1)"></span>
-      <span class="dot" onclick="irParaSlide(2)"></span>
+    <span class="dot" onclick="irParaSlide(0)"></span>
+    <span class="dot" onclick="irParaSlide(1)"></span>
+    <span class="dot" onclick="irParaSlide(2)"></span>
   </div>
 </div>
-
 
 
     
@@ -547,48 +548,32 @@
         </script>
         
         
-        <script>
-          (() => {
-              let slideIndex = 0;
-              const slides = document.querySelectorAll(".slide");
-              const dots = document.querySelectorAll(".dot");
-              const carouselImages = document.querySelector(".carousel-images");
-          
-              function mostrarSlide(index) {
-                  if (index >= slides.length) slideIndex = 0;
-                  if (index < 0) slideIndex = slides.length - 1;
-          
-                  // Mover o carrossel
-                  carouselImages.style.transform = `translateX(-${slideIndex * 100}vw)`;
-          
-                  // Atualizar os dots
-                  dots.forEach(dot => dot.classList.remove("active"));
-                  if (dots[slideIndex]) {
-                      dots[slideIndex].classList.add("active");
-                  }
-              }
-          
-              function mudarSlide(n) {
-                  slideIndex += n;
-                  mostrarSlide(slideIndex);
-              }
-          
-              function irParaSlide(n) {
-                  slideIndex = n;
-                  mostrarSlide(slideIndex);
-              }
-          
-              // Troca automática de slides a cada 5 segundos
-              setInterval(() => mudarSlide(1), 5000);
-          
-              // Inicializa
-              mostrarSlide(slideIndex);
-          
-              // Expõe funções ao escopo global (para uso no onclick do HTML)
-              window.mudarSlide = mudarSlide;
-              window.irParaSlide = irParaSlide;
-          })();
-          </script>
+       <script>
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const nextButton = document.querySelector('.next');
+const prevButton = document.querySelector('.prev');
+
+let currentIndex = 0;
+
+function updateCarousel() {
+  const slideWidth = slides[0].getBoundingClientRect().width;
+  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+nextButton.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateCarousel();
+});
+
+prevButton.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  updateCarousel();
+});
+
+window.addEventListener('resize', updateCarousel);
+</script>
+
 
     
 </body>
