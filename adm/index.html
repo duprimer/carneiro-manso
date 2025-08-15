@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<!-- Firebase compat (v8) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-storage-compat.js"></script>
+
+<!-- Seu config -->
+<script src="js/firebase-config.js"></script>
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="content first-content">
+            <div class="first-column">
+                <h2 class="title title-primary">Bem Vindo de volta!</h2>
+                <p class="description description-primary">To keep connected with us</p>
+                <p class="description description-primary">please login with your personal info</p>
+                
+            </div>    
+            <div class="second-column">
+                <h2 class="title title-second">Login</h2>
+                
+                <p class="description description-second">Use o Email cadastrado:</p>
+                <form class="form">
+                    
+                    
+                    <label class="label-input" for="">
+                        <i class="far fa-envelope icon-modify"></i>
+                        <input id="email" type="email" placeholder="Email">
+                    </label>
+                    
+                    <label class="label-input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input id="password" type="password" placeholder="Password">
+                    </label>
+                    
+                    
+                    <button id="loginBtn" class="btn btn-second"  >sign up</button>        
+                </form>
+            </div><!-- second column -->
+        </div><!-- first content -->
+       
+
+
+        <script src="js/script-login.js"></script>
+    
+</body>
+</html>

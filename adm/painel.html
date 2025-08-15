@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="painel.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-storage-compat.js"></script>
+    <script src="firebase-config.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Painel Administrativo</h1>
+        <button id="logoutBtn">Sair</button>
+    </header>
+
+    <div class="container">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#" onclick="showSection('noticias')">📰 Notícias</a></li>
+                <li><a href="#" onclick="showSection('galeria')">📸 Galeria</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <!-- Notícias -->
+            <section id="noticias" class="panel-section" style="display:none;">
+                <h2>Gerenciar Notícias</h2>
+                <form id="newsForm">
+                    <input type="text" id="newsTitle" placeholder="Título da notícia" required>
+                    <textarea id="newsContent" placeholder="Conteúdo da notícia" required></textarea>
+                    <button type="submit">Salvar Notícia</button>
+                </form>
+                <h3>Lista de Notícias</h3>
+                <ul id="newsList"></ul>
+            </section>
+
+            <!-- Galeria -->
+            <section id="galeria" class="panel-section" style="display:none;">
+                <h2>Gerenciar Galeria</h2>
+                <form id="photoForm">
+                    <input type="file" id="photoFile" required>
+                    <input type="text" id="photoDesc" placeholder="Descrição da foto" required>
+                    <button type="submit">Enviar Foto</button>
+                </form>
+                <h3>Fotos Enviadas</h3>
+                <div id="photoList"></div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Proteção de rota
+        firebase.auth().onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = "index.html";
+            }
+        });
+
+        // Logout
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            firebase.auth().signOut().then(() => {
+                window.location.href = "index.html";
+            });
+        });
+
+        // Alternar seções
+        function showSection(sectionId) {
+            document.querySelectorAll(".panel-section").forEach(sec => sec.style.display = "none");
+            document.getElementById(sectionId).style.display = "block";
+        }
+
+        // Firestore & Storage
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        // Adicionar notícia
+        document.getElementById("newsForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const title = document.getElementById("newsTitle").value;
+            const content = document.getElementById("newsContent").value;
+            await db.collection("noticias").add({
+                titulo: title,
+                conteudo: content,
+                data: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            document.getElementById("newsForm").reset();
+            loadNews();
+        });
+
+        // Carregar notícias
+        async function loadNews() {
+            const newsList = document.getElementById("newsList");
+            newsList.innerHTML = "";
+            const snapshot = await db.collection("noticias").orderBy("data", "desc").get();
+            snapshot.forEach(doc => {
+                const li = document.createElement("li");
+                li.textContent = doc.data().titulo;
+                newsList.appendChild(li);
+            });
+        }
+
+        // Adicionar foto
+        document.getElementById("photoForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const file = document.getElementById("photoFile").files[0];
+            const desc = document.getElementById("photoDesc").value;
+
+            if (!file) return;
+
+            const storageRef = storage.ref("galeria/" + file.name);
+            await storageRef.put(file);
+            const url = await storageRef.getDownloadURL();
+
+            await db.collection("galeria").add({
+                descricao: desc,
+                url: url,
+                data: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            document.getElementById("photoForm").reset();
+            loadPhotos();
+        });
+
+        // Carregar fotos
+        async function loadPhotos() {
+            const photoList = document.getElementById("photoList");
+            photoList.innerHTML = "";
+            const snapshot = await db.collection("galeria").orderBy("data", "desc").get();
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                const img = document.createElement("img");
+                img.src = data.url;
+                img.alt = data.descricao;
+                img.style.width = "150px";
+                img.style.margin = "5px";
+                photoList.appendChild(img);
+            });
+        }
+
+        // Inicializa listas ao abrir
+        loadNews();
+        loadPhotos();
+    </script>
+</body>
+</html>
